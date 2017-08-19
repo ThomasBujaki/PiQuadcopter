@@ -86,9 +86,9 @@ try:
 	 elif char == 97: #a
 		pwm.set_pwm(0, 0, 410)
 	 elif char == 119: #w
-		pwm.set_pwm(1, 0, 410)
+		pwm.set_pwm(5, 4096, 0)
 	 elif char == 115: #s
-		pwm.set_pwm(2, 0,410) 	
+		pwm.set_pwm(5, 0,0) 	
 	 elif char == 100: #d
 		pwm.set_pwm(3, 0, 410)
 	 elif char == curses.KEY_RIGHT:

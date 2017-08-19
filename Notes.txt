@@ -1,0 +1,2 @@
+MPU-6050 i2c address: 0x68
+Adafruit PCA9685 i2c port: 0x40 & 0x70, 0x40 is the actual port used in simpletest.py
