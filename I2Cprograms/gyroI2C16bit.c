@@ -19,7 +19,7 @@
 
 int main() {
 	int fd;
-	short int read_val;
+	unsigned short int read_val;
 	double temp_celcius;
 	fd = wiringPiI2CSetup(MPU6050_I2C_ADDRESS);
 	wiringPiI2CWriteReg16(fd, 0x6B, 0); // sends reset command to gyro, accel and temp
@@ -27,30 +27,33 @@ int main() {
 	printf("fd: %d \n",fd);
 
 //accelerometer
+while(1){
 	read_val = wiringPiI2CReadReg16(fd, MPU6050_I2C_ACCEL_XOUT_HIGH);
 	read_val = (read_val>>8)|(read_val<<8);
-	printf("%d \t",read_val);
+	printf("%d \t",(short int)read_val);
 	
 	read_val = wiringPiI2CReadReg16(fd,MPU6050_I2C_ACCEL_YOUT_HIGH);
 	read_val = (read_val>>8)|(read_val<<8);
-	printf(" %d \t",read_val);
+	printf(" %d \t",(short int)read_val);
 	
 	read_val = wiringPiI2CReadReg16(fd,MPU6050_I2C_ACCEL_ZOUT_HIGH);
 	read_val = (read_val>>8)|(read_val<<8);
-	printf(" %d \n",read_val);
+	printf(" %d \t",(short int)read_val);
+	
+
 //gyroscope	
-while(1){
 	read_val = wiringPiI2CReadReg16(fd,MPU6050_I2C_GYRO_XOUT_HIGH);
 	read_val = (read_val>>8)|(read_val<<8);
-	printf(" %d \t",read_val);
+	printf(" %d \t",(short int)read_val);
 	
 	read_val = wiringPiI2CReadReg16(fd,MPU6050_I2C_GYRO_YOUT_HIGH);
 	read_val = (read_val>>8)|(read_val<<8);
+	printf(" %d \t",(short int)read_val);
 
-	printf(" %d \t",read_val);
 	read_val = wiringPiI2CReadReg16(fd,MPU6050_I2C_GYRO_ZOUT_HIGH);
 	read_val = (read_val>>8)|(read_val<<8);
-	printf(" %d \n",read_val);
+	printf(" %d \n",(short int)read_val);
 }
 	return 0;
+
 }
