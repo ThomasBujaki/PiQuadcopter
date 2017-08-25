@@ -17,7 +17,9 @@
 #define MPU6050_I2C_GYRO_YOUT_HIGH 0x45
 #define MPU6050_I2C_GYRO_ZOUT_HIGH 0x47
 
-static short calibrate_x=-1500, calibrate_y=250, calibrate_z=-4000 ;
+static double calibrate_offset[] = {-0.32288818359375, 0.153814697265, -2.053405761718};
+static double calibrate_scale[] = {1.0, 0.99, 0.97503181};
+
 static double fullScaleAccelerometerRange = 2.0;
 static double localAccelerationDueToGravity = 9.81;
 
@@ -26,12 +28,14 @@ unsigned short convertToLittleEndian(unsigned short bigEndianValue){
 	return littleEndianValue;
 } 
 
-double convertRegisterValueToAcceleration(short int registerValueInLittleEndian) {
-//	unsigned short registerValueInLittleEndian = convertToLittleEndian(registerValue);
+// axis 0=x, 1=y, 2=z
+double convertRegisterValueToAcceleration(short int registerValue, unsigned int axis) {
+	unsigned short registerValueInLittleEndian = convertToLittleEndian(registerValue);
 	double normalizedAcceleration = (short int)registerValueInLittleEndian / 32768.0;
 	double accelerationInGs = normalizedAcceleration * fullScaleAccelerometerRange;
 	double accelerationInMetersPerSecond = accelerationInGs * localAccelerationDueToGravity;
-	return accelerationInMetersPerSecond;
+	double calibratedValue = (accelerationInMetersPerSecond + calibrate_offset[axis]) * calibrate_scale[axis];
+	return calibratedValue;
 }
 
 //double getAccelInMperS (unsigned short int accel_raw){
@@ -51,8 +55,6 @@ int main() {
 	int fd;
 	unsigned short int read_val;
 	double ax, ay, az, root ;
-	float minX=0, minY=0, minZ=0; 
-	float maxX=0, maxY=0, maxZ=0; 
 	short signed_read_val	;
 	fd = wiringPiI2CSetup(MPU6050_I2C_ADDRESS);
 	wiringPiI2CWriteReg16(fd, 0x6B, 0); // sends reset command to gyro, accel and temp
@@ -62,32 +64,19 @@ int main() {
 //accelerometer
 while(1){
 	read_val = wiringPiI2CReadReg16(fd, MPU6050_I2C_ACCEL_XOUT_HIGH);
-	signed_read_val = (short)convertToLittleEndian(read_val)+calibrate_x;
-	printf("%d \t",signed_read_val);
-	ax = convertRegisterValueToAcceleration(signed_read_val);	
-	minX= fmin(ax, minX);
-	maxX= fmax(ax, maxX);
-
-	printf(" %f \t",ax);
+	ax = convertRegisterValueToAcceleration(read_val, 0);	
+	printf("ax %f \t",ax);
 	
 	read_val = wiringPiI2CReadReg16(fd,MPU6050_I2C_ACCEL_YOUT_HIGH);
-	signed_read_val = (short)convertToLittleEndian(read_val)+calibrate_y;
-	printf("%d \t",signed_read_val);
-	ay = convertRegisterValueToAcceleration(signed_read_val);
-	minY= fmin(ay, minY);
-	maxY= fmax(ay, maxY);
-	printf(" %f \t",ay);
+	ay = convertRegisterValueToAcceleration(read_val, 1);
+	printf("ay %f \t",ay);
 
 	read_val = wiringPiI2CReadReg16(fd,MPU6050_I2C_ACCEL_ZOUT_HIGH);
-	signed_read_val = (short)convertToLittleEndian(read_val)+calibrate_z;
-	printf("%d \t",signed_read_val);
-	az = convertRegisterValueToAcceleration(signed_read_val);	
-	minZ= fmin(az, minZ);
-	maxZ= fmax(az, maxZ);
+	az = convertRegisterValueToAcceleration(read_val, 2);	
 
-	printf(" %f \t",az);
+	printf("az %f \t",az);
 	root=sqrt(ax*ax+ay*ay+az*az);
-	printf(" %f \n", root);
+	printf(" magnitude %f \n", root);
 
 	
 //	printf(" %f \t",minX);
@@ -101,15 +90,15 @@ while(1){
 //gyroscope	
 	read_val = wiringPiI2CReadReg16(fd,MPU6050_I2C_GYRO_XOUT_HIGH);
 	read_val = (read_val>>8)|(read_val<<8);
-	printf(" %d \t",(short int)read_val);
+	//printf(" %d \t",(short int)read_val);
 	
 	read_val = wiringPiI2CReadReg16(fd,MPU6050_I2C_GYRO_YOUT_HIGH);
 	read_val = (read_val>>8)|(read_val<<8);
-	printf(" %d \t",(short int)read_val);
+	//printf(" %d \t",(short int)read_val);
 
 	read_val = wiringPiI2CReadReg16(fd,MPU6050_I2C_GYRO_ZOUT_HIGH);
 	read_val = (read_val>>8)|(read_val<<8);
-	printf(" %d \n",(short int)read_val);
+	//printf(" %d \n",(short int)read_val);
 	return 0;
 
 }
