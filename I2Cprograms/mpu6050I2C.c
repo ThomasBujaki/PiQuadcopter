@@ -1,14 +1,10 @@
 /*
-* August 29th 2017
-* By:
-*
 * Reads acceleration and orientation values from the MPU-6050 chip using I2C as the communication protocol
 *	MPU-6050 has both accelerometer and a gyroscope, accelerometer is set to +- 2g
 ********************************************************************************************************
 */
 
 #include <wiringPiI2C.h>
-#include <stdio.h>
 #include <math.h>
 
 // general
@@ -136,9 +132,9 @@ short get_mpu6050_gyro_value(int axis){
 	        read_val = wiringPiI2CReadReg16(fd, MPU6050_I2C_GYRO_ZOUT_HIGH);
 	}
         
-	unsigned_gyro_vlaue = convertToLittleEndian(read_val);
+	unsigned_gyro_value = convertToLittleEndian(read_val);
 	signed_gyro_value = (short)unsigned_gyro_value;
-	
+			
 	return signed_gyro_value;
 }
 

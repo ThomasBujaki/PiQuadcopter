@@ -1,7 +1,4 @@
 /*
-* August 29th 2017
-* By: Thomas Bujaki
-*
 * Writes instructions to PCA9685 chip using wiringPi
 *       signal required for electronic speed controllers is a minimum of 1ms and maximum of 2ms duty cycle
 *       1ms dutycycle is represented by ~205 difference between on and off (a 100% duty cycle is about 20ms and required a difference of 4096 between on and off values written to the register) a 2ms duty cycle is obtained by writing 410 difference
@@ -9,7 +6,6 @@
 */
 
 #include <wiringPiI2C.h>
-#include <stdio.h>
 
 #define PCA9685_I2C_ADDRESS 0x40
 #define LED_ON_LOW 0x06

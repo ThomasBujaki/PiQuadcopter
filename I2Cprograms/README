@@ -1,12 +1,8 @@
-The code in this folder requires the wiringPi package to work.
+example output of test.out
 
-using 16 bit calls
-
-ACCEL_XOUT_HIGH:  
-ACCEL_YOUT_HIGH:  
-ACCEL_ZOUT_HIGH:  
-GYRO_XOUT_HIGH:  
-GYRO_YOUT_HIGH:  
-GYRO_ZOUT_HIGH: 
-
-range from 0 to 65535 
+loop iteration: 0 	 accelerometer value: -0.856978 
+loop iteration: 0 	 gyro value: -630 
+loop iteration: 1 	 accelerometer value: 1.110189 
+loop iteration: 1 	 gyro value: 35 
+loop iteration: 2 	 accelerometer value: 9.804738 
+loop iteration: 2 	 gyro value: -27 
