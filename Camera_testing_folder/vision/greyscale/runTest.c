@@ -1,11 +1,3 @@
-// put main here
-// read file as binary.
-// pass binary to image processing file
-// get result.
-
-
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -13,6 +5,7 @@
 
 
 int main (){
+  // Read file.
   long length;
   FILE *f = fopen ("still-640x480.data", "rb");
 
@@ -28,9 +21,18 @@ int main (){
   fread (rgb_buffer, 1, length, f);
   fclose (f);
 
-  someType image = image_processing(raw_image);
-  
-  saveImage();
+  // Run processing
+  gs_pixel* image = image_processing(raw_image);
+
+  // Save file
+  FILE *pFile = fopen("greyscale.data", "wb"); 
+  if (pFile){
+    fwrite(image, (length*2/3), 1, pFile);
+    fclose(pFile);
+  }
+
+  free(raw_image);
+  free(image);
 
   return 0;
 }
