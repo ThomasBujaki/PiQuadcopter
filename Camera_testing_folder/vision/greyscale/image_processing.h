@@ -1,4 +1,5 @@
 #pragma once
+#include <stdint.h>
 
 typedef struct rgb_pixel {
         uint8_t red;
