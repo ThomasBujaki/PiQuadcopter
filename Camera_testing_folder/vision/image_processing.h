@@ -13,6 +13,15 @@ typedef struct gs_pixel {
 } gs_pixel;
 
 
+typedef struct rgb_buffer {
+  rgb_pixel* buffer,
+  uint32_t width,
+  uint32_t height
+}
+
+#define IMAGE_WIDTH 460
+
+
 int make_greyscale (rgb_pixel* color_buffer, gs_pixel* greyscale_buffer, int image_width, int image_height);
 
 int
