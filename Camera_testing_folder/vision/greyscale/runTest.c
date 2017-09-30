@@ -18,7 +18,7 @@ int main (){
   fseek (f, 0, SEEK_SET);
 
   rgb_pixel *raw_image = (rgb_pixel*)malloc (length);
-  fread (rgb_buffer, 1, length, f);
+  fread (raw_image, 1, length, f);
   fclose (f);
 
   // Run processing
