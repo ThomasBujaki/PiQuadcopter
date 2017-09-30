@@ -12,5 +12,7 @@ typedef struct gs_pixel {
 	uint16_t pixel;
 } gs_pixel;
 
+#define HEIGHT 480
+#define WIDTH  640
 
 gs_pixel* image_processing(rgb_pixel* raw_image);
