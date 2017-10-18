@@ -17,3 +17,4 @@ greyscale_pixel *get_greyscale_pixel(greyscale_image *image, uint32_t x, uint32_
 
 void init_greyscale_image(greyscale_image *image, uint32_t height, uint32_t width);
 void destroy_greyscale_image(greyscale_image *image);
+
