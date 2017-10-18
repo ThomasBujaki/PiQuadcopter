@@ -3,7 +3,7 @@
 matrix gauss_matrix(int variance, int matrix_size){
 	matrix gaussian_matrix;
 	init_matrix(&gaussian_matrix, matrix_size, matrix_size);
-	float scaling_factor = ( 1 / ( sqrt ( 2 * M_PI * variance )));
+	float scaling_factor = ( 1 / ( 2 * M_PI * variance ));
 
 	for (int x=0 ; x < matrix_size ; x++ ){
 		int x_element = x-(matrix_size-1)/2;
