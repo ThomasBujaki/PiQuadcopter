@@ -18,3 +18,10 @@ void destroy_greyscale_image(greyscale_image *image)
 {
     free(image->pixel);
 }
+
+/*
+void setPixel(greyscale_image *image, uint32_t x, uint32_t y, )
+{
+    image->data[x + y * image->height] = ;
+}
+*/
