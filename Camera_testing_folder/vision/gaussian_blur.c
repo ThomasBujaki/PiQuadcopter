@@ -1,6 +1,4 @@
-
-
-void convolve(greyscale_image* image, greyscale_image* gs_smooth, float ){
+void convolve(greyscale_image* image, greyscale_image* gs_smooth, matrix* m){
 
 }
 

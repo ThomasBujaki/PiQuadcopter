@@ -54,3 +54,6 @@ dkms.conf
 *~
 *.swp
 *.un~
+
+# Visual studio code junk
+.vscode
