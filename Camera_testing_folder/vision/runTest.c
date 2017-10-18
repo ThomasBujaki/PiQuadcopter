@@ -35,7 +35,7 @@ int main()
     FILE *pFile = fopen("greyscale.data", "wb");
     if (pFile)
     {
-        fwrite(image, (length * 2 / 3), 1, pFile);
+        fwrite(image->pixel, (length * 2 / 3), 1, pFile);
         fclose(pFile);
     }
 

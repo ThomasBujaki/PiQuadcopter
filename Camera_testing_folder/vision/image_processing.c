@@ -26,12 +26,12 @@ greyscale_image *image_processing(rgb_image *raw_image)
     // Step 1: convert to grey scale
     greyscale_image *gs_image = grey_image(raw_image);
     // Step 2: guasian smoothing
-    greyscale_image *gs_smooth = smooth_image(gs_image);
+    //greyscale_image *gs_smooth = smooth_image(gs_image);
 
     // Step 3: sobel
     // Step 4: canny
     // Step 5: profit.
-    destroy_greyscale_image(gs_image);
-    free(gs_image);
-    return gs_smooth;
+    // destroy_greyscale_image(gs_image);
+    //free(gs_image);
+    return gs_image;
 }
