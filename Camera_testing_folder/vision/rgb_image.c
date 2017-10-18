@@ -1,5 +1,20 @@
 #include "rgb_image.h"
 
-rgb_pixel getPixel(rgb_image* image, uint32_t x, uint32_t y) {
-  return image.pixel[x + y * image.height];
+#include <stdlib.h>
+
+rgb_pixel get_rgb_pixel(rgb_image *image, uint32_t x, uint32_t y)
+{
+    return image->pixel[x + y * image->height];
+}
+
+void init_rgb_image(rgb_image *image, uint32_t height, uint32_t width)
+{
+    image->height = height;
+    image->width = width;
+    image->pixel = (rgb_pixel *)malloc(height * width);
+}
+
+void destroy_rgb_image(rgb_image *image)
+{
+    free(image->pixel);
 }
