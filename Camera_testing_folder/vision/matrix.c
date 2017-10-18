@@ -1,19 +1,19 @@
 #include "matrix.h"
 
-void initMatrix(matrix* matrix, uint32_t width, uint32_t height) {
-  matrix->data = calloc(1, sizeof(matrix));
-  matrix->width = width;
-  matrix->height = height;
+void init_matrix(matrix* m, uint32_t width, uint32_t height) {
+  m->data = calloc(width*height, sizeof(float));
+  m->width = width;
+  m->height = height;
 }
 
-float getMatrixValue(matrix* matrix, uint32_t x, uint32_t y) {
-  return matrix->data[x + y * matrix->height];
+float get_matrix_value(matrix* m, uint32_t x, uint32_t y) {
+  return m->data[x + y * m->height];
 }
 
-void setMatrixValue(matrix* matrix, uint32_t x, uint32_t y, float newValue) {
-  matrix->data[x + y * matrix->height] = newValue;
+void set_matrix_value(matrix* m, uint32_t x, uint32_t y, float newValue) {
+  m->data[x + y * m->height] = newValue;
 }
 
-void destroyMatrix(matrix* matrix) {
-  free(matrix->data);
+void destroy_matrix(m* matrix) {
+  free(m->data);
 }
