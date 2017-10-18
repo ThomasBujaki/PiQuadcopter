@@ -12,3 +12,4 @@ typedef struct greyscale_image {
 } image;
 
 greyscale_pixel getPixel(greyscale_image* image, uint32_t x, uint32_t y);
+void setPixel(greyscale_image* image, uint32_t x, uint32_t y, greyscale_pixel pixel);

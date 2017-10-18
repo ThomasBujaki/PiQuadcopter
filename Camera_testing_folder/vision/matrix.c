@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "matrix.h"
 
 void init_matrix(matrix* m, uint32_t width, uint32_t height) {
