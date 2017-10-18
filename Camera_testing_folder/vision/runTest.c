@@ -17,7 +17,6 @@ int main()
     // Read file.
     long length;
     FILE *f = fopen("still-640x480.data", "rb");
-
     if (!f)
     {
         return -1;
@@ -30,10 +29,8 @@ int main()
     rgb_image raw_image;
     convert_raw_to_image(f, &raw_image, length);
     fclose(f);
-
     // Run processing
     greyscale_image *image = image_processing(&raw_image);
-
     // Save file
     FILE *pFile = fopen("greyscale.data", "wb");
     if (pFile)
