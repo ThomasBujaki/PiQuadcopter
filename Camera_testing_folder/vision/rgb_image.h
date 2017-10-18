@@ -13,3 +13,4 @@ typedef struct rgb_image {
   rgb_pixel* pixel;
 } rgb_image;
 
+rgb_pixel getPixel(rgb_image* image, uint32_t x, uint32_t y);
