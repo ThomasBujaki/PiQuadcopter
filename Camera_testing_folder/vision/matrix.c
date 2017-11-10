@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include "matrix.h"
 
 void init_matrix(matrix* m, uint32_t width, uint32_t height) {
@@ -15,6 +16,15 @@ void set_matrix_value(matrix* m, uint32_t x, uint32_t y, float newValue) {
   m->data[x + y * m->height] = newValue;
 }
 
-void destroy_matrix(m* matrix) {
+void destroy_matrix(matrix* m) {
   free(m->data);
+}
+
+void print_matrix(matrix* m){
+ for (int y=0; y < m->height; y++ ){
+    for (int x=0; x < m->width; x++ ){
+      printf("\t%.2f", get_matrix_value(m, x, y));
+    }
+  printf("\n");
+  }
 }
