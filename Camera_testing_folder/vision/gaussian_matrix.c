@@ -1,6 +1,7 @@
 #include <math.h>
 #include <stdio.h>
 #include "matrix.h"
+#define M_PI 3.1415926535
 
 matrix gauss_matrix(int variance, int matrix_size){
 	matrix gaussian_matrix;
@@ -8,13 +9,13 @@ matrix gauss_matrix(int variance, int matrix_size){
 	float scaling_factor = ( 1 / ( 2 * M_PI * variance ));
 
 	for (int x=0 ; x < matrix_size ; x++ ){
-		int x_element = x-((matrix_size-1)/2);
+		double x_element = x-((matrix_size-1)/2);
 		
 		for (int y=0 ; y < matrix_size ; y++ ){	
-			int y_element = y-((matrix_size-1)/2);
+			double y_element = y-((matrix_size-1)/2);
 			
-			float element_X = ( (-1 * pow( x_element, 2 )) / (2*variance ) );
-			float element_Y = ( (-1 * pow( y_element, 2 )) / (2*variance ) );
+			float element_X = ( (-1 * pow(x_element, 2.0 )) / (2 * variance ) );
+			float element_Y = ( (-1 * pow(y_element, 2.0 )) / (2 * variance ) );
 			float matrix_value = scaling_factor*(exp(element_X+element_Y));
 			if (x==0 && y==0){
 				printf("%f %f %d %f %f %f %d\n",element_X, element_Y, variance, matrix_value,scaling_factor, exp(element_X+element_Y), matrix_size);

@@ -3,11 +3,9 @@
 ********************************************************************************************************
 */
 
-#ifndef PAC9685I2C_H_
-#define PAC9685I2C_H_
+#ifndef TEST_H_
+#define TEST_H_
 
-int reset_pca9685();
 int set_pwm_signal (int channel, int on_value, int off_value);
 
-#endif 
- 
+#endif

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 gcc -lm -lpng -o convert_to_png.out convert_to_png.c
 chmod +x convert_to_png.out
 ./convert_to_png.out $1

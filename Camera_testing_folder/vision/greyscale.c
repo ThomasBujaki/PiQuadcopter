@@ -5,11 +5,6 @@
 
 #include <stdio.h>
 
-void convert_rgb_to_greyscale(rgb_pixel *rgb, greyscale_pixel *gs)
-{
-    gs->pixel = rgb->red + rgb->green + rgb->blue;
-}
-
 void make_greyscale(rgb_image *rgb_buffer, greyscale_image *gs_buffer)
 {
 
@@ -17,9 +12,10 @@ void make_greyscale(rgb_image *rgb_buffer, greyscale_image *gs_buffer)
     {
         for (int y = 0; y < rgb_buffer->height; y++)
         {
-            rgb_pixel *rgb = get_rgb_pixel(rgb_buffer, x, y);
-            greyscale_pixel *gs = get_greyscale_pixel(gs_buffer, x, y);
-            convert_rgb_to_greyscale(rgb, gs);
+            rgb_pixel rgb = get_rgb_pixel(rgb_buffer, x, y);
+	    greyscale_pixel grey;
+	    grey.pixel = rgb.red + rgb.green + rgb.blue;
+            set_greyscale_pixel(gs_buffer, x, y, grey);  
         }
     }
 }

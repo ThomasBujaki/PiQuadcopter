@@ -40,13 +40,13 @@ int reset_pca9685(){
 *
 *******************************************************************************************************
 */
-int set_pwm_signal(int channel, int off_value){
+int set_pwm_signal(int channel, int on_value ,int off_value){
         int fd;
 
         fd = wiringPiI2CSetup(PCA9685_I2C_ADDRESS);
 
-        wiringPiI2CWriteReg8(fd, LED_ON_LOW+4*channel, 0x00) ;
-        wiringPiI2CWriteReg8(fd, LED_ON_HIGH+4*channel, 0x00) ;
+        wiringPiI2CWriteReg8(fd, LED_ON_LOW+4*channel, on_value & 0xff) ;
+        wiringPiI2CWriteReg8(fd, LED_ON_HIGH+4*channel, on_value >> 8) ;
         wiringPiI2CWriteReg8(fd, LED_OFF_LOW+4*channel, off_value & 0xff) ; // only takes the bottom 8 bits from the on_value
         wiringPiI2CWriteReg8(fd, LED_OFF_HIGH+4*channel, off_value >> 8) ; // shifts top 8 bits to bottom so full coverage of the 16 bit signal is given (even though the actual values are max 12 bits long I2C uses 16 bit signals
 
