@@ -13,8 +13,8 @@ void make_greyscale(rgb_image *rgb_buffer, greyscale_image *gs_buffer)
         for (int y = 0; y < rgb_buffer->height; y++)
         {
             rgb_pixel rgb = get_rgb_pixel(rgb_buffer, x, y);
-	          greyscale_pixel grey;
-	          grey.pixel = rgb.red + rgb.green + rgb.blue;
+            greyscale_pixel grey;
+            grey.pixel = rgb.red + rgb.green + rgb.blue;
             set_greyscale_pixel(gs_buffer, x, y, grey);  
         }
     }

@@ -1,25 +1,24 @@
-# do this next!
+#include "sobel.h"
 
+//work here next!
+// to do: make convolve function that takes both x and y convolutions and gets gradient and angle on each pixel.
+void *sobel(greyscale_image *image, greyscale_image* sobel_magnitude, matrix* angle) {
+    matrix gx;
+    matrix gy;	
 
-n sobel(A : as two dimensional image array)
-	Gx=[-1 0 1; -2 0 2; -1 0 1]
-	Gy=[-1 -2 -1; 0 0 0; 1 2 1]
+    init_matrix(&gx, 3, 3);
+    init_matrix(&gy, 3, 3);
+
+    set_matrix(&gx, {-1f, 0f, 1f, -2f, 0f, 2f, -1f, 0f, 1f})
+    set_matrix(&gy, {-1f, -2f, -1f, 0f, 0f, 0f, 1f, 2f, 1f})
+    
+    convolve(image, sobel_gradient, &gx);
+    convolve(image, sobel_gradient, &gy);
+
+    magnitude(); // mag(i+1,j+1)=sqrt(S1.^2+S2.^2)
 	
-	rows = size(A,1)
-	columns = size(A,2)
-	mag=zeros(A)
+    int threshold = 211 ; //varies for application [0 768]
+    output_image = max(mag,threshold)
+    output_image(output_image==round(threshold))=0;
 
-	for i=1:rows-2
-		for j=1:columns-2
-			S1=sum(sum(Gx.*A(i:i+2,j:j+2)))
-			S2=sum(sum(Gy.*A(i:i+2,j:j+2)))
-
-			mag(i+1,j+1)=sqrt(S1.^2+S2.^2)
-		end for
-	end for
-	
-	threshold = 70 %varies for application [0 255]
-	output_image = max(mag,threshold)
-	output_image(output_image==round(threshold))=0;
-	return output_image
-end function
+}

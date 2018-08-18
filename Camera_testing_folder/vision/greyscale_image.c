@@ -1,4 +1,4 @@
-#include "greyscale_image.h"
+ginclude "greyscale_image.h"
 
 #include <stdlib.h>
 
