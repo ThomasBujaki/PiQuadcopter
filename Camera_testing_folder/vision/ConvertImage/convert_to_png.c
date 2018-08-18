@@ -115,7 +115,7 @@ int main (int argc, char *argv[])
 {
     // Read file.
     long length;
-    FILE *f = fopen("greyscale.data", "rb");
+    FILE *f = fopen("../greyscale.data", "rb");
     if (!f)
     {
         printf("Error reading in grayscale data");
