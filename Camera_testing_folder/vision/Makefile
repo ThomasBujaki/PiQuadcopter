@@ -1,12 +1,17 @@
+CC = gcc
+src = $(wildcard *.c)
+obj = $(src:.c=.o)
 
-runTest:
-	gcc runTest.c image_processing.c greyscale.c greyscale_image.c rgb_image.c gaussian_blur.c matrix.c gaussian_matrix.c -lm -o runTest.out -std=c11
+LDFLAGS = -lGL -lglut -lpng -lz -lm -std=c11
 
-pipeline: clean runTest
+build: $(obj)
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+run: clean build
 	./runTest.out
 	./convert_to_png.sh
 
+.PHONY: clean
 clean:
-	rm -f grayscale.out
-	rm -f out.png
-	rm -f runTest.out
+	rm -f $(obj) myprog
+
