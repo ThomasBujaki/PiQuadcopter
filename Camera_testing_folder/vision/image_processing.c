@@ -19,7 +19,9 @@ greyscale_image *smooth_image(greyscale_image *gs_image) {
 greyscale_image *apply_sobel(greyscale_image *gs_smooth) {
     greyscale_image *sobel_image = (gs_smooth *)malloc(sizeof(greyscale_image));
     init_greyscale_image(sobel_image, gs_smooth->height, gs_smoth->width);
-    sobel(gs_smooth, sobel_image);     
+    matrix sobel_angle;
+    init_matrix(&sobel_angle, gs_smooth->width, gs_smooth->height);
+    sobel(gs_smooth, sobel_image, sobel_angle);     
     return sobel_image;
 }
 
@@ -35,5 +37,6 @@ greyscale_image *image_processing(rgb_image *raw_image) {
     // Step 5: profit.
     // destroy_greyscale_image(gs_image);
     //free(gs_image);
-    return gs_smooth;
+    //free(gs_smooth)
+    return sobel_image;
 }

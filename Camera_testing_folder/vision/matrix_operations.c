@@ -47,9 +47,3 @@ uint16_t get_mod_pixel_value(matrix* m, greyscale_image* image, int x, int y) {
     }   
     return value;
 }
-
-void image_magnitude() {
-    
-
-
-}
