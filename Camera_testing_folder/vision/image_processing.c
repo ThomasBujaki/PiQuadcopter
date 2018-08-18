@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include "image_processing.h"
-#include <stdio.h> //*************** remove after testing
+#include <stdio.h> 
 
 greyscale_image *grey_image(rgb_image *raw_image) {
     greyscale_image *gs_image = (greyscale_image *)malloc(sizeof(greyscale_image));
@@ -17,11 +17,10 @@ greyscale_image *smooth_image(greyscale_image *gs_image) {
 }
 
 greyscale_image *apply_sobel(greyscale_image *gs_smooth) {
-    greyscale_image *sobel_image = (greyscale_image *)malloc(sizeof(greyscale_image)); //memory that gets passed around
+    greyscale_image *sobel_image = (greyscale_image *)malloc(sizeof(greyscale_image)); 
     init_greyscale_image(sobel_image, gs_smooth->height, gs_smooth->width); 
     matrix sobel_angle;
     init_matrix(&sobel_angle, gs_smooth->width, gs_smooth->height);
-//    printf("%x\n",&sobel_angle);
     sobel(gs_smooth, sobel_image, &sobel_angle);     
     return sobel_image;
 }
