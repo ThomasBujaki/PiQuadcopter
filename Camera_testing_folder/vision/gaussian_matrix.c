@@ -1,6 +1,4 @@
-#include <math.h>
-#include <stdio.h>
-#include "matrix.h"
+#include "gaussian_matrix.h"
 #define M_PI 3.1415926535
 
 matrix gauss_matrix(int variance, int matrix_size){

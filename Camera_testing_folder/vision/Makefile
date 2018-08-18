@@ -1,14 +1,14 @@
-CC = gcc
+CC = gcc -std=c11
 src = $(wildcard *.c)
 obj = $(src:.c=.o)
 
-LDFLAGS = -std=c11
+LDFLAGS = -lm #-std=c11
 
 build: $(obj)
-	$(CC) -o $@ $^ $(LDFLAGS)
+	$(CC) -o $@ $^ $(LDFLAGS) 
 
 run: clean build
-	./runTest.out
+	./build
 	cd ConvertImage; ./convert_to_png.sh
 
 .PHONY: clean

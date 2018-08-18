@@ -42,7 +42,7 @@ uint16_t get_mod_pixel_value(matrix* m, greyscale_image* image, int x, int y) {
         int convolution_y = y - (m->height / 2) + matrix_y;
         greyscale_pixel input_pixel_value = get_extended_value(image, convolution_x, convolution_y);
         float matrix_value = get_matrix_value(m, matrix_x, matrix_y);
-        value += input_pixel_value.pixel * matrix_value;
+        value += (float)input_pixel_value.pixel * matrix_value;
       }   
     }   
     return value;

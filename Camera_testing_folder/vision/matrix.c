@@ -1,5 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "matrix.h"
 
 void init_matrix(matrix* m, uint32_t width, uint32_t height) {
@@ -12,8 +10,8 @@ float get_matrix_value(matrix* m, uint32_t x, uint32_t y) {
   return m->data[x + y * m->height];
 }
 
-void set_matix(matrix* m, float* data) {
-  memcpy(m->data, data);
+void set_matrix(matrix* m, float* data, uint32_t size) {
+  memcpy(m->data, data, size);
 }
 
 void set_matrix_value(matrix* m, uint32_t x, uint32_t y, float newValue) {

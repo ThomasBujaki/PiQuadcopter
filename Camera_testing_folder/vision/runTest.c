@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h> 
 #include <stdlib.h>
 #include <stdint.h>
 
@@ -6,15 +6,14 @@
 #include "image_processing.h"
 #include "rgb_image.h"
 
-void convert_raw_to_image(FILE *file, rgb_image *image, long length)
-{
+void convert_raw_to_image(FILE *file, rgb_image *image, long length) {
     init_rgb_image(image, 480, 640);
     fread(image->pixel, 1, length, file);
 }
 
-int main()
-{
+int main() {
     // Read file.
+    printf("running!\n");
     long length;
     FILE *f = fopen("still-640x480.data", "rb");
     if (!f)
