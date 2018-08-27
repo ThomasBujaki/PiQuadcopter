@@ -2,7 +2,7 @@ CC = gcc -std=c11
 src = $(wildcard *.c)
 obj = $(src:.c=.o)
 
-LDFLAGS = -lm #-std=c11
+LDFLAGS = -lm -lpng #-std=c11
 
 build: $(obj)
 	$(CC) -o $@ $^ $(LDFLAGS) 

@@ -1,13 +1,11 @@
 #pragma once
 #include <stdint.h>
 
-typedef struct greyscale_pixel
-{
+typedef struct greyscale_pixel {
     uint16_t pixel;
 } greyscale_pixel;
 
-typedef struct greyscale_image
-{
+typedef struct greyscale_image {
     uint32_t height;
     uint32_t width;
     greyscale_pixel *pixel;

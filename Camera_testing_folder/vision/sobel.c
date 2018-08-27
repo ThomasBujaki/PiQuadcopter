@@ -18,7 +18,7 @@ void set_sobel_angle(matrix* sobel_angle, greyscale_pixel gx_value, greyscale_pi
 //void sobel_convolution() {
 //}
 
-void *sobel(greyscale_image *image, greyscale_image* sobel_magnitude, matrix* sobel_angle) {
+void sobel(greyscale_image *image, greyscale_image* sobel_magnitude, matrix* sobel_angle, sobel_output* sobel_g_a) {
     matrix gx;
     matrix gy;
     
@@ -48,6 +48,8 @@ void *sobel(greyscale_image *image, greyscale_image* sobel_magnitude, matrix* so
 
         }
     }
+    sobel_g_a->sobel_gradient = sobel_magnitude;
+    sobel_g_a->sobel_angle = sobel_angle;
  //   print_matrix(sobel_angle); ** use to verify the matrix values
  //   int threshold = 211 ; //varies for application [0 768]
  //   output_image = max(mag,threshold)

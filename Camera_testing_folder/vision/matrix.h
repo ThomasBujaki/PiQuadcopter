@@ -5,9 +5,9 @@
 #include <string.h>
 
 typedef struct matrix {
-  uint32_t height;
-  uint32_t width;
-  float * data;
+    uint32_t height;
+    uint32_t width;
+    float * data;
 } matrix;
 
 void init_matrix(matrix* m, uint32_t width, uint32_t height);
