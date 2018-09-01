@@ -48,6 +48,8 @@ void sobel(greyscale_image *image, greyscale_image* sobel_magnitude, matrix* sob
 
         }
     }
+    destroy_matrix(&gx);
+    destroy_matrix(&gy);
     sobel_g_a->sobel_gradient = sobel_magnitude;
     sobel_g_a->sobel_angle = sobel_angle;
  //   print_matrix(sobel_angle); ** use to verify the matrix values

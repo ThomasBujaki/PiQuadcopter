@@ -10,7 +10,7 @@ void init_greyscale_image(greyscale_image *image, uint32_t height, uint32_t widt
 {
     image->height = height;
     image->width = width;
-    image->pixel = (greyscale_pixel *)malloc(height * width * sizeof(greyscale_pixel));
+    image->pixel = malloc(height * width * sizeof(greyscale_pixel));
 }
 
 void destroy_greyscale_image(greyscale_image *image)
