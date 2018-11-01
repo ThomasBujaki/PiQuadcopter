@@ -5,10 +5,10 @@ obj = $(src:.c=.o)
 LDFLAGS = -lm -lpng #-std=c11
 
 build: $(obj)
-	$(CC) -o $@ $^ $(LDFLAGS) 
+	$(CC) -o build.out $^ $(LDFLAGS) 
 
 run: clean build
-	./build
+	./build.out
 	cd ConvertImage; ./convert_to_png.sh
 
 .PHONY: clean
