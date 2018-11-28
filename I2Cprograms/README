@@ -1,8 +1,0 @@
-example output of test.out
-
-loop iteration: 0 	 accelerometer value: -0.856978 
-loop iteration: 0 	 gyro value: -630 
-loop iteration: 1 	 accelerometer value: 1.110189 
-loop iteration: 1 	 gyro value: 35 
-loop iteration: 2 	 accelerometer value: 9.804738 
-loop iteration: 2 	 gyro value: -27 
