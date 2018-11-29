@@ -1,4 +1,4 @@
-CC = gcc -std=c11
+CC = g++ 
 src = $(wildcard *.c)
 obj = $(src:.c=.o)
 
