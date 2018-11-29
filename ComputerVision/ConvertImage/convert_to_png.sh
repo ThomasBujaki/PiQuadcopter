@@ -1,6 +1,6 @@
 #!/bin/bash
 
-gcc -std=c11 -lm -lpng -o convert_to_png.out convert_to_png.c
+gcc -std=c11 -o convert_to_png.out convert_to_png.c -lm -lpng
 chmod +x convert_to_png.out
 ./convert_to_png.out $1
 

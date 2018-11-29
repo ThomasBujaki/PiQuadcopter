@@ -1,4 +1,0 @@
-In this folder we are working to implement edge detection.
-
-Important files present are:
-	

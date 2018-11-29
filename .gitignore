@@ -56,3 +56,6 @@ dkms.conf
 *.un~
 # Visual studio code junk
 .vscode
+
+out.png
+
