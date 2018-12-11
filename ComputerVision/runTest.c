@@ -4,7 +4,7 @@
 
 #include "greyscale_image.h"
 #include "image_processing.h"
-#include "rgb_image.h"
+#include "rgb_image.hpp"
 
 void convert_raw_to_image(FILE *file, rgb_image *image, long length) {
     init_rgb_image(image, 480, 640);

@@ -1,4 +1,4 @@
-#include "rgb_image.h"
+#include "rgb_image.hpp"
 
 #include <stdlib.h>
 

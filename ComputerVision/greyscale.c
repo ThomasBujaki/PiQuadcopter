@@ -1,7 +1,7 @@
 #include "greyscale.h"
 
 #include "greyscale_image.h"
-#include "rgb_image.h"
+#include "rgb_image.hpp"
 
 #include <stdio.h>
 

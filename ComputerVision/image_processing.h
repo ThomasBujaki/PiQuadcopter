@@ -1,9 +1,8 @@
 #pragma once
 #include <stdint.h>
 #include "greyscale_image.h"
-#include "rgb_image.h"
+#include "rgb_image.hpp"
 #include "gaussian_blur.h"
-#include "rgb_image.h"
 #include "greyscale.h"
 #include "greyscale_image.h"
 #include "sobel.h"
