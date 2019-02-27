@@ -1,4 +1,4 @@
-#include "matrix.h"
+#include "matrix.hpp"
 
 void init_matrix(matrix* m, uint32_t width, uint32_t height) {
   m->data = (float *)calloc(width*height, sizeof(float));
