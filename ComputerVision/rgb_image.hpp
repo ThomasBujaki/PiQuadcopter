@@ -1,6 +1,6 @@
 #pragma once
 #include <stdint.h>
-#include <rgbPixel.h>
+#include "rgbPixel.h"
 #include <string>
 
 class RgbImage
@@ -12,8 +12,7 @@ class RgbImage
         const int height;
     
     RgbImage(std::string fileName, int width, int height);
-    
+    ~RgbImage();
     RgbPixel GetRgbPixel(int x, int y);
-
-}
+};
 

@@ -2,19 +2,17 @@
 
 #include <stdlib.h>
 
-rgb_pixel get_rgb_pixel(rgb_image *image, uint32_t x, uint32_t y)
+RgbImage::RgbImage(std::string fileName, int width, int height): width(width), height(height)
 {
-    return image->pixel[x + y * image->width];
+    this->image_data_ = (RgbPixel**)malloc(width * height * sizeof(RgbPixel));
 }
 
-void init_rgb_image(rgb_image *image, uint32_t height, uint32_t width)
+RgbPixel RgbImage::GetRgbPixel(int x, int y)
 {
-    image->height = height;
-    image->width = width;
-    image->pixel = (rgb_pixel *)malloc(height * width * sizeof(rgb_pixel));
+    return this->image_data_[x][y];
 }
 
-void destroy_rgb_image(rgb_image *image)
+RgbImage::~RgbImage()
 {
-    free(image->pixel);
+    free(this->image_data_);
 }
