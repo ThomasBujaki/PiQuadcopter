@@ -1,9 +1,7 @@
 #include "matrix.hpp"
 
-void init_matrix(matrix* m, uint32_t width, uint32_t height) {
-  m->data = (float *)calloc(width*height, sizeof(float));
-  m->width = width;
-  m->height = height;
+Matrix::Matrix(float* data, int width, int height): width(width), height(height) {
+  this->data_=data;
 }
 
 float get_matrix_value(matrix* m, uint32_t x, uint32_t y) {
